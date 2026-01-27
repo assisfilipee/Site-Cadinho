@@ -696,3 +696,114 @@ img{ max-width:100%; display:block; }
     text-align: left;
   }
 }
+
+/* ================================
+   RESPONSIVO — MOBILE (≤ 575.98px)
+   ================================ */
+@media (max-width: 575.98px){
+
+  /* Container mais “justo” no celular */
+  .container{
+    width: min(100% - 2rem, 1100px);
+  }
+
+  /* Navbar: empilha e simplifica */
+  .nav{
+    padding: .75rem 0;
+  }
+
+  .nav__inner{
+    grid-template-columns: 1fr auto; /* brand | whatsapp */
+    gap: .75rem;
+  }
+
+  /* some o menu do meio (Home/Sobre/Portfólio/Contato) no mobile */
+  .nav__links{
+    display: none;
+  }
+
+  /* deixa o botão do Whats menor */
+  .nav__cta{
+    padding: .55rem .75rem;
+    font-size: .9rem;
+  }
+
+  /* HERO: tipografia e espaçamento */
+  .hero{
+    min-height: 78vh;
+    padding-top: 5.2rem; /* compensar nav fixa */
+  }
+
+  .hero__content{
+    max-width: 100%;
+  }
+
+  .hero h1{
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .hero .lead{
+    font-size: 1rem;
+  }
+
+  .hero__cta{
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem;
+  }
+
+  .hero__cta .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* PORTFÓLIO: 3 colunas -> 1 coluna */
+  .gallery{
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .work__media{
+    height: 180px; /* evita card gigante */
+  }
+
+  /* SOBRE: se tiver grid/colunas, força 1 coluna */
+  .about__grid,
+  .sobre__grid,
+  .grid-2{
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CONTATO: 2 colunas -> 1 coluna */
+  .contact,
+  .contato,
+  .contact__grid{
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* Form: botões full width */
+  .form .btn{
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer__inner,
+  .footer .container{
+    text-align: center;
+  }
+
+  /* Lightbox: botões de navegação menores */
+  .lightbox__nav{
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+  .lightbox__close{
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+}
