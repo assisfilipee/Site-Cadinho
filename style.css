@@ -1,0 +1,698 @@
+/* =========================================
+   RICARDO VIANA | STYLE.CSS
+   Tema: clean (branco/cinza)
+   Dica: procure pelos títulos (NAV / HERO / etc.)
+   para saber exatamente qual parte mexe em quê.
+========================================= */
+
+/* ---------- RESET / BASE ---------- */
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --bg: #ffffff;              /* fundo geral */
+  --bg-alt: #f6f7f9;          /* fundo alternativo (seções) */
+  --text: #111827;            /* texto principal */
+  --muted: #6b7280;           /* texto secundário */
+  --line: rgba(17,24,39,.10); /* linhas/bordas */
+  --shadow: 0 14px 40px rgba(17,24,39,.10);
+
+  --radius: 16px;
+
+  --container: 1120px;        /* largura máxima */
+  --nav-h: 76px;              /* altura da navbar (usada no padding-top do body) */
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+
+  /* IMPORTANTÍSSIMO:
+     como a nav é fixa, empurra o conteúdo pra baixo */
+  padding-top: var(--nav-h);
+}
+
+/* ---------- UTILITÁRIOS (reusáveis) ---------- */
+.container{
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+a{ color: inherit; text-decoration: none; }
+img{ max-width:100%; display:block; }
+
+.muted{ color: var(--muted); }
+.tiny{ font-size: .85rem; }
+
+/* Botões (usados na Hero / Form) */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+
+  padding:.9rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  background: var(--text);
+  color: #fff;
+  font-weight: 400;
+
+  cursor: pointer;
+  transition: 
+  transform .15s ease,
+  opacity .15s ease,
+  background .2s ease,
+  color .2s ease,
+  border-color .2s ease;
+}
+
+.btn:hover{ transform: translateY(-1px); opacity:.95; }
+.btn:active{ transform: translateY(0); }
+
+.btn--ghost{
+  background: transparent;
+  color: var(--bg-alt);
+  border: 3px solid var(--text); /* ← aqui ficou mais grossa */
+}
+
+.btn--ghost:hover{
+  background: var(--text);
+  color: #fff;
+  border-color: var(--text);
+  opacity: 1;
+}
+
+
+/* ---------- NAVBAR (Header fixo) ---------- */
+/* mexe no <header class="header"> */
+.header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 999;
+
+  /* fundo com leve transparência + blur */
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--line);
+}
+
+.hero__bg{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e5e7eb; /* fallback */
+}
+
+.hero__bg--top{
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* mexe no <nav class="nav container"> */
+.nav{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* mexe no nome "Ricardo Viana" */
+.brand{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: 1.05rem;
+  justify-self: start;
+}
+
+/* mexe nos links do meio */
+.nav__links{
+  list-style: none;
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__link{
+  font-weight: 600;
+  color: var(--muted);
+  padding: .55rem .7rem;
+  border-radius: 999px;
+  transition: background .15s ease, color .15s ease;
+}
+
+.nav__link:hover{
+  color: var(--text);
+  background: rgba(17,24,39,.05);
+}
+
+/* mexe no WhatsApp da direita */
+.nav__whats{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+
+  padding: .55rem .85rem;
+  border-radius: 999px;
+
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.nav__whats:hover{
+  transform: translateY(-1px);
+  background: rgba(17,24,39,.03);
+  border-color: rgba(17,24,39,.18);
+}
+
+.icon{ display:block; fill: currentColor; }
+.nav__whatsText{
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+/* ---------- HERO (Home, foto tela cheia) ---------- */
+/* mexe no <section class="hero" id="home"> */
+.hero{
+  position: relative;
+  min-height: calc(100vh - var(--nav-h));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* mexe no "fundo" da hero (.hero__bg) */
+.hero__bg{
+  position: absolute;
+  inset: 0;
+
+  /* Troque a imagem aqui depois */
+  background-image: url("./img/hero.jpg");
+  background-size: cover;
+  background-position: center;
+
+  /* fallback caso não tenha imagem */
+  background-color: #e5e7eb;
+}
+
+/* camada de contraste (escurece levemente para ler o texto) */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.28),
+    rgba(0,0,0,.55)
+  );
+}
+
+/* mexe no conteúdo/textos da hero */
+.hero__content{
+  position: relative; /* fica acima do overlay */
+  z-index: 1;
+  color: #fff;
+  max-width: 780px;
+  text-align: left;
+
+  padding: 2.2rem 0;
+}
+
+.hero__content,
+.hero__content *{
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.60),
+    0 6px 24px rgba(0,0,0,.35);
+}
+
+.hero__tag{
+  display:inline-block;
+  font-size: .95rem;
+  color: rgba(255,255,255,.88);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.08);
+}
+
+.hero__title{
+  margin-top: 1rem;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.hero__subtitle{
+  margin-top: .8rem;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.88);
+  max-width: 60ch;
+}
+
+.hero__cta{
+  margin-top: 1.4rem;
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- SEÇÕES (Sobre / Portfólio / Contato) ---------- */
+.section{
+  padding: 4.5rem 0;
+}
+
+.section--alt{
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section h2{
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.section__grid{
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+/* lista do sobre */
+.bullets{
+  margin-top: 1rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.bullets li{ margin: .35rem 0; }
+
+/* Card lateral do Sobre */
+.card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.3rem;
+}
+
+.card h3{ font-size: 1.1rem; }
+.card p{ color: var(--muted); margin-top: .45rem; }
+
+.card__miniGrid{
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .9rem;
+}
+
+.mini{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .9rem;
+  background: rgba(17,24,39,.02);
+}
+.mini strong{ display:block; font-size:.95rem; }
+.mini span{ color: var(--muted); font-size:.9rem; }
+
+/* ---------- PORTFÓLIO (grid de projetos) ---------- */
+.section__head{
+  display: grid;
+  gap: .35rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1.1rem;
+}
+
+.work{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(17,24,39,.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.work:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(17,24,39,.10);
+}
+
+/* área da imagem do card (placeholder) */
+.work__media{
+  height: 180px;
+  background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+}
+
+.work__media{
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e5e7eb;
+}
+
+/* IMAGENS DO PORTFÓLIO */
+.media-cozinha{
+  background-image: url("./img/cozinha2-portfolio.webp");
+}
+
+.media-dormitorio{
+  background-image: url("./img/dormitorio-portfolio.webp");
+}
+
+.media-sala{
+  background-image: url("./img/sala-portfolio.webp");
+}
+
+.media-projeto{
+  background-image: url("./img/projeto-portfolio.webp");
+}
+
+.media-escritorio{
+  background-image: url("./img/home-office-portfolio.webp");
+}
+
+.media-comercial{
+  background-image: url("./img/home-office2-portfolio.webp");
+}
+
+
+/* infos do card */
+.work__info{
+  padding: 1rem 1rem 1.2rem;
+}
+
+.work__info h3{
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.work__info p{
+  margin-top: .35rem;
+  color: var(--muted);
+}
+
+/* ---------- CONTATO (texto + formulário) ---------- */
+.contact{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.contact__cards{
+  margin-top: 1.2rem;
+  display: grid;
+  gap: .8rem;
+}
+
+.contact__card{
+  display: grid;
+  gap: .15rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.contact__card:hover{
+  transform: translateY(-1px);
+  border-color: rgba(17,24,39,.18);
+  background: rgba(17,24,39,.02);
+}
+
+/* Form */
+.form{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.3rem;
+}
+
+.form h3{ font-size: 1.15rem; }
+
+.field{
+  display: grid;
+  gap: .35rem;
+  margin-top: .9rem;
+}
+
+.field span{
+  font-weight: 700;
+  font-size: .92rem;
+}
+
+.field input,
+.field textarea{
+  width: 100%;
+  padding: .85rem .95rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  outline: none;
+  background: #fff;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  font: inherit;
+}
+
+.field input:focus,
+.field textarea:focus{
+  border-color: rgba(17,24,39,.25);
+  box-shadow: 0 0 0 4px rgba(17,24,39,.06);
+}
+
+/* botão dentro do form */
+.form .btn{
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* ---------- FOOTER ---------- */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0;
+  background: #fff;
+}
+
+.footer__inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ============ LIGHTBOX (modal de imagem) ============ */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  place-items: center;
+  background: rgba(0,0,0,.75);
+  padding: 2rem 1rem;
+}
+
+.lightbox.is-open{
+  display: grid;
+}
+
+.lightbox__content{
+  max-width: min(1000px, 92vw);
+  max-height: 82vh;
+  margin: 0;
+  position: relative;
+}
+
+.lightbox__img{
+  width: 100%;
+  height: auto;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  background: #111; /* evita flash branco */
+  display: block;
+}
+
+.lightbox__caption{
+  margin-top: .75rem;
+  text-align: center;
+  color: rgba(255,255,255,.85);
+  font-size: .95rem;
+}
+
+.lightbox__close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+
+.lightbox__close:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.18);
+}
+
+.lightbox__nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+
+.lightbox__nav:hover{
+  transform: translateY(-50%) scale(1.03);
+  background: rgba(255,255,255,.18);
+}
+
+.lightbox__prev{ left: 18px; }
+.lightbox__next{ right: 18px; }
+
+@media (max-width: 700px){
+  .lightbox__prev{ left: 10px; }
+  .lightbox__next{ right: 10px; }
+}
+
+/* CONTATO CENTRALIZADO */
+.contato-central{
+  display: flex;
+  justify-content: center;
+}
+
+.contato-form{
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.contato-form h2{
+  margin-bottom: .4rem;
+}
+
+.contato-form .muted{
+  margin-bottom: 1.2rem;
+}
+
+.contato-form .btn{
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Centraliza o form de contato atual (sem mexer no HTML) */
+#contato{
+  padding: 4.5rem 0;
+}
+
+#contato .form{
+  max-width: 720px;
+  margin: 0 auto;       /* centraliza */
+}
+
+#contato .form .btn{
+  width: 100%;
+}
+
+.footer-link{
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link:hover{
+  text-decoration: underline;
+}
+
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 980px){
+  .nav{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand whats"
+      "links links";
+    height: auto;
+    padding: .85rem 0;
+  }
+
+  .brand{ grid-area: brand; }
+  .nav__whats{ grid-area: whats; }
+
+  .nav__links{
+    grid-area: links;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: .55rem;
+    padding-top: .55rem;
+  }
+
+  /* como a nav cresceu no mobile, aumentamos o padding-top do body */
+  body{ padding-top: 110px; }
+
+  .section__grid{
+    grid-template-columns: 1fr;
+  }
+
+  .gallery{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .contact{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px){
+  .gallery{
+    grid-template-columns: 1fr;
+  }
+
+  .nav__whatsText{
+    display: none; /* fica só o ícone no muito pequeno */
+  }
+
+  .hero__content{
+    text-align: left;
+  }
+}
