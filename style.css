@@ -1,11 +1,12 @@
 /* =========================================
    RICARDO VIANA | STYLE.CSS
    Tema: clean (branco/cinza)
-   Dica: procure pelos títulos (NAV / HERO / etc.)
-   para saber exatamente qual parte mexe em quê.
+   Responsivo: Desktop / Tablet / Mobile
 ========================================= */
 
-/* ---------- RESET / BASE ---------- */
+/* ==================================================
+   RESET / BASE
+================================================== */
 *{ margin:0; padding:0; box-sizing:border-box; }
 
 :root{
@@ -19,10 +20,19 @@
   --radius: 16px;
 
   --container: 1120px;        /* largura máxima */
-  --nav-h: 76px;              /* altura da navbar (usada no padding-top do body) */
+  --nav-h: 76px;              /* altura base da navbar */
 }
 
 html{ scroll-behavior:smooth; }
+
+/* ==================================================
+   TRAVA ANTI-SCROLL HORIZONTAL (GLOBAL)
+   - evita qualquer overflow lateral no mobile/tablet
+================================================== */
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 body{
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -30,15 +40,17 @@ body{
   color: var(--text);
   line-height: 1.6;
 
-  /* IMPORTANTÍSSIMO:
-     como a nav é fixa, empurra o conteúdo pra baixo */
+  /* nav fixa */
   padding-top: var(--nav-h);
 }
 
-/* ---------- UTILITÁRIOS (reusáveis) ---------- */
+/* ==================================================
+   UTILITÁRIOS
+================================================== */
 .container{
   width: min(100% - 2rem, var(--container));
   margin-inline: auto;
+  max-width: 100%;
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -47,7 +59,9 @@ img{ max-width:100%; display:block; }
 .muted{ color: var(--muted); }
 .tiny{ font-size: .85rem; }
 
-/* Botões (usados na Hero / Form) */
+/* ==================================================
+   BOTÕES
+================================================== */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -64,11 +78,15 @@ img{ max-width:100%; display:block; }
 
   cursor: pointer;
   transition: 
-  transform .15s ease,
-  opacity .15s ease,
-  background .2s ease,
-  color .2s ease,
-  border-color .2s ease;
+    transform .15s ease,
+    opacity .15s ease,
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+
+  /* anti-estouro no mobile */
+  max-width: 100%;
+  white-space: normal;
 }
 
 .btn:hover{ transform: translateY(-1px); opacity:.95; }
@@ -77,7 +95,7 @@ img{ max-width:100%; display:block; }
 .btn--ghost{
   background: transparent;
   color: var(--bg-alt);
-  border: 3px solid var(--text); /* ← aqui ficou mais grossa */
+  border: 3px solid var(--text);
 }
 
 .btn--ghost:hover{
@@ -87,34 +105,23 @@ img{ max-width:100%; display:block; }
   opacity: 1;
 }
 
-
-/* ---------- NAVBAR (Header fixo) ---------- */
-/* mexe no <header class="header"> */
+/* ==================================================
+   NAVBAR (Header fixo)
+================================================== */
 .header{
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
   z-index: 999;
 
-  /* fundo com leve transparência + blur */
   background: rgba(255,255,255,.85);
   backdrop-filter: blur(10px);
 
   border-bottom: 1px solid var(--line);
-}
 
-.hero__bg{
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #e5e7eb; /* fallback */
-}
-
-.hero__bg--top{
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  /* anti-scroll lateral */
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* mexe no <nav class="nav container"> */
@@ -124,6 +131,17 @@ img{ max-width:100%; display:block; }
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
+
+  /* anti-scroll lateral */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* evita grid estourar por conteúdo (muito comum) */
+.brand,
+.nav__links,
+.nav__whats{
+  min-width: 0;
 }
 
 /* mexe no nome "Ricardo Viana" */
@@ -134,13 +152,14 @@ img{ max-width:100%; display:block; }
   justify-self: start;
 }
 
-/* mexe nos links do meio */
+/* links do meio */
 .nav__links{
   list-style: none;
   display: flex;
   gap: 1.1rem;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav__link{
@@ -156,7 +175,7 @@ img{ max-width:100%; display:block; }
   background: rgba(17,24,39,.05);
 }
 
-/* mexe no WhatsApp da direita */
+/* WhatsApp da direita */
 .nav__whats{
   justify-self: end;
   display: inline-flex;
@@ -169,6 +188,8 @@ img{ max-width:100%; display:block; }
   border: 1px solid var(--line);
   background: #fff;
   transition: transform .15s ease, background .15s ease, border-color .15s ease;
+
+  max-width: 100%;
 }
 
 .nav__whats:hover{
@@ -183,31 +204,41 @@ img{ max-width:100%; display:block; }
   font-size: .95rem;
 }
 
-/* ---------- HERO (Home, foto tela cheia) ---------- */
-/* mexe no <section class="hero" id="home"> */
+/* ==================================================
+   HERO (Home)
+================================================== */
 .hero{
   position: relative;
   min-height: calc(100vh - var(--nav-h));
   display: grid;
   place-items: center;
   overflow: hidden;
+
+  width: 100%;
+  max-width: 100%;
 }
 
-/* mexe no "fundo" da hero (.hero__bg) */
+/* fundo da hero */
 .hero__bg{
   position: absolute;
   inset: 0;
-
-  /* Troque a imagem aqui depois */
   background-image: url("./img/hero.jpg");
   background-size: cover;
   background-position: center;
-
-  /* fallback caso não tenha imagem */
+  background-repeat: no-repeat;
   background-color: #e5e7eb;
+
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-/* camada de contraste (escurece levemente para ler o texto) */
+.hero__bg--top{
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* overlay */
 .hero::after{
   content:"";
   position:absolute;
@@ -220,15 +251,15 @@ img{ max-width:100%; display:block; }
   );
 }
 
-/* mexe no conteúdo/textos da hero */
 .hero__content{
-  position: relative; /* fica acima do overlay */
+  position: relative;
   z-index: 1;
   color: #fff;
   max-width: 780px;
   text-align: left;
-
   padding: 2.2rem 0;
+
+  min-width: 0;
 }
 
 .hero__content,
@@ -268,11 +299,16 @@ img{ max-width:100%; display:block; }
   display: flex;
   gap: .8rem;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
-/* ---------- SEÇÕES (Sobre / Portfólio / Contato) ---------- */
+/* ==================================================
+   SEÇÕES (Sobre / Portfólio / Contato)
+================================================== */
 .section{
   padding: 4.5rem 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .section--alt{
@@ -293,7 +329,10 @@ img{ max-width:100%; display:block; }
   gap: 2rem;
   align-items: start;
   margin-top: 1rem;
+  max-width: 100%;
 }
+
+.section__grid > *{ min-width: 0; }
 
 /* lista do sobre */
 .bullets{
@@ -303,13 +342,15 @@ img{ max-width:100%; display:block; }
 }
 .bullets li{ margin: .35rem 0; }
 
-/* Card lateral do Sobre */
+/* card */
 .card{
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.3rem;
+
+  max-width: 100%;
 }
 
 .card h3{ font-size: 1.1rem; }
@@ -327,22 +368,29 @@ img{ max-width:100%; display:block; }
   border-radius: 14px;
   padding: .9rem;
   background: rgba(17,24,39,.02);
+  max-width: 100%;
 }
 .mini strong{ display:block; font-size:.95rem; }
 .mini span{ color: var(--muted); font-size:.9rem; }
 
-/* ---------- PORTFÓLIO (grid de projetos) ---------- */
+/* ==================================================
+   PORTFÓLIO
+================================================== */
 .section__head{
   display: grid;
   gap: .35rem;
   margin-bottom: 1.5rem;
+  max-width: 100%;
 }
 
 .gallery{
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 1.1rem;
+  max-width: 100%;
 }
+
+.gallery > *{ min-width: 0; }
 
 .work{
   background: #fff;
@@ -351,17 +399,12 @@ img{ max-width:100%; display:block; }
   overflow: hidden;
   box-shadow: 0 10px 26px rgba(17,24,39,.06);
   transition: transform .15s ease, box-shadow .15s ease;
+  max-width: 100%;
 }
 
 .work:hover{
   transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(17,24,39,.10);
-}
-
-/* área da imagem do card (placeholder) */
-.work__media{
-  height: 180px;
-  background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
 }
 
 .work__media{
@@ -370,35 +413,17 @@ img{ max-width:100%; display:block; }
   background-position: center;
   background-repeat: no-repeat;
   background-color: #e5e7eb;
+  max-width: 100%;
 }
 
-/* IMAGENS DO PORTFÓLIO */
-.media-cozinha{
-  background-image: url("./img/cozinha2-portfolio.webp");
-}
+/* imagens */
+.media-cozinha{ background-image: url("./img/cozinha2-portfolio.webp"); }
+.media-dormitorio{ background-image: url("./img/dormitorio-portfolio.webp"); }
+.media-sala{ background-image: url("./img/sala-portfolio.webp"); }
+.media-projeto{ background-image: url("./img/projeto-portfolio.webp"); }
+.media-escritorio{ background-image: url("./img/home-office-portfolio.webp"); }
+.media-comercial{ background-image: url("./img/home-office2-portfolio.webp"); }
 
-.media-dormitorio{
-  background-image: url("./img/dormitorio-portfolio.webp");
-}
-
-.media-sala{
-  background-image: url("./img/sala-portfolio.webp");
-}
-
-.media-projeto{
-  background-image: url("./img/projeto-portfolio.webp");
-}
-
-.media-escritorio{
-  background-image: url("./img/home-office-portfolio.webp");
-}
-
-.media-comercial{
-  background-image: url("./img/home-office2-portfolio.webp");
-}
-
-
-/* infos do card */
 .work__info{
   padding: 1rem 1rem 1.2rem;
 }
@@ -413,14 +438,19 @@ img{ max-width:100%; display:block; }
   color: var(--muted);
 }
 
-/* ---------- CONTATO (texto + formulário) ---------- */
+/* ==================================================
+   CONTATO
+================================================== */
 .contact{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: start;
   margin-top: 1rem;
+  max-width: 100%;
 }
+
+.contact > *{ min-width: 0; }
 
 .contact__cards{
   margin-top: 1.2rem;
@@ -436,6 +466,7 @@ img{ max-width:100%; display:block; }
   border: 1px solid var(--line);
   background: #fff;
   transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  max-width: 100%;
 }
 
 .contact__card:hover{
@@ -444,13 +475,14 @@ img{ max-width:100%; display:block; }
   background: rgba(17,24,39,.02);
 }
 
-/* Form */
+/* form */
 .form{
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.3rem;
+  max-width: 100%;
 }
 
 .form h3{ font-size: 1.15rem; }
@@ -484,17 +516,21 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 0 0 4px rgba(17,24,39,.06);
 }
 
-/* botão dentro do form */
 .form .btn{
   margin-top: 1rem;
   width: 100%;
 }
 
-/* ---------- FOOTER ---------- */
+/* ==================================================
+   FOOTER
+================================================== */
 .footer{
   border-top: 1px solid var(--line);
   padding: 1.6rem 0;
   background: #fff;
+
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .footer__inner{
@@ -503,9 +539,23 @@ img{ max-width:100%; display:block; }
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+
+  max-width: 100%;
 }
 
-/* ============ LIGHTBOX (modal de imagem) ============ */
+.footer-link{
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link:hover{
+  text-decoration: underline;
+}
+
+/* ==================================================
+   LIGHTBOX
+================================================== */
 .lightbox{
   position: fixed;
   inset: 0;
@@ -514,11 +564,13 @@ img{ max-width:100%; display:block; }
   place-items: center;
   background: rgba(0,0,0,.75);
   padding: 2rem 1rem;
+
+  /* evita overflow lateral em alguns browsers */
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-.lightbox.is-open{
-  display: grid;
-}
+.lightbox.is-open{ display: grid; }
 
 .lightbox__content{
   max-width: min(1000px, 92vw);
@@ -534,7 +586,7 @@ img{ max-width:100%; display:block; }
   object-fit: contain;
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(0,0,0,.45);
-  background: #111; /* evita flash branco */
+  background: #111;
   display: block;
 }
 
@@ -590,15 +642,13 @@ img{ max-width:100%; display:block; }
 .lightbox__prev{ left: 18px; }
 .lightbox__next{ right: 18px; }
 
-@media (max-width: 700px){
-  .lightbox__prev{ left: 10px; }
-  .lightbox__next{ right: 10px; }
-}
-
-/* CONTATO CENTRALIZADO */
+/* ==================================================
+   CONTATO CENTRALIZADO (mantido)
+================================================== */
 .contato-central{
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }
 
 .contato-form{
@@ -607,53 +657,52 @@ img{ max-width:100%; display:block; }
   text-align: center;
 }
 
-.contato-form h2{
-  margin-bottom: .4rem;
-}
-
-.contato-form .muted{
-  margin-bottom: 1.2rem;
-}
-
-.contato-form .btn{
-  width: 100%;
-  margin-top: 1rem;
-}
+.contato-form h2{ margin-bottom: .4rem; }
+.contato-form .muted{ margin-bottom: 1.2rem; }
+.contato-form .btn{ width: 100%; margin-top: 1rem; }
 
 /* Centraliza o form de contato atual (sem mexer no HTML) */
-#contato{
-  padding: 4.5rem 0;
-}
+#contato{ padding: 4.5rem 0; }
 
 #contato .form{
   max-width: 720px;
-  margin: 0 auto;       /* centraliza */
+  margin: 0 auto;
 }
 
-#contato .form .btn{
-  width: 100%;
+#contato .form .btn{ width: 100%; }
+
+/* ==================================================
+   RESPONSIVO — BREAKPOINTS DO PROJETO
+   Mobile:  ≤ 575.98px
+   Tablet:  576px — 991.98px
+   Desktop: 992px — 1199.98px
+   XL:      ≥ 1200px (default)
+================================================== */
+
+/* ================================
+   DESKTOP (992px — 1199.98px)
+================================ */
+@media (min-width: 992px) and (max-width: 1199.98px){
+  :root{ --container: 1040px; }
+  .section{ padding: 4.2rem 0; }
 }
 
-.footer-link{
-  color: inherit;
-  text-decoration: none;
-  font-weight: 600;
-}
+/* ================================
+   TABLET (576px — 991.98px)
+================================ */
+@media (min-width: 576px) and (max-width: 991.98px){
 
-.footer-link:hover{
-  text-decoration: underline;
-}
+  /* Navbar em 2 linhas */
+  .header{ height: auto; }
 
-
-/* ---------- RESPONSIVO ---------- */
-@media (max-width: 980px){
   .nav{
+    height: auto;
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "brand whats"
       "links links";
-    height: auto;
     padding: .85rem 0;
+    width: 100%;
   }
 
   .brand{ grid-area: brand; }
@@ -667,85 +716,60 @@ img{ max-width:100%; display:block; }
     padding-top: .55rem;
   }
 
-  /* como a nav cresceu no mobile, aumentamos o padding-top do body */
-  body{ padding-top: 110px; }
+  /* Compensa a header */
+  body{ padding-top: 118px; }
 
-  .section__grid{
-    grid-template-columns: 1fr;
-  }
+  /* HERO */
+  .hero__content{ padding: 2rem 0; }
 
-  .gallery{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
+  /* SOBRE */
+  .section__grid{ grid-template-columns: 1fr; }
 
-  .contact{
-    grid-template-columns: 1fr;
-  }
-}
+  /* PORTFÓLIO */
+  .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 
-@media (max-width: 560px){
-  .gallery{
-    grid-template-columns: 1fr;
-  }
+  /* CONTATO */
+  .contact{ grid-template-columns: 1fr; }
 
-  .nav__whatsText{
-    display: none; /* fica só o ícone no muito pequeno */
-  }
-
-  .hero__content{
-    text-align: left;
-  }
+  /* Lightbox */
+  .lightbox__prev{ left: 10px; }
+  .lightbox__next{ right: 10px; }
 }
 
 /* ================================
-   RESPONSIVO — MOBILE (≤ 575.98px)
-   ================================ */
+   MOBILE (≤ 575.98px)
+================================ */
 @media (max-width: 575.98px){
 
-  /* Container mais “justo” no celular */
-  .container{
-    width: min(100% - 2rem, 1100px);
-  }
+  /* Navbar compacta */
+  .header{ height: auto; }
 
-  /* Navbar: empilha e simplifica */
   .nav{
+    height: auto;
+    grid-template-columns: 1fr auto;
     padding: .75rem 0;
+    width: 100%;
   }
 
-  .nav__inner{
-    grid-template-columns: 1fr auto; /* brand | whatsapp */
-    gap: .75rem;
-  }
+  /* esconde links do meio no mobile */
+  .nav__links{ display: none; }
 
-  /* some o menu do meio (Home/Sobre/Portfólio/Contato) no mobile */
-  .nav__links{
-    display: none;
-  }
+  /* Whats menor e seguro */
+  .nav__whats{ padding: .55rem .7rem; }
+  .nav__whatsText{ display: none; }
 
-  /* deixa o botão do Whats menor */
-  .nav__cta{
-    padding: .55rem .75rem;
-    font-size: .9rem;
-  }
+  /* Compensa header no mobile */
+  body{ padding-top: 92px; }
 
-  /* HERO: tipografia e espaçamento */
-  .hero{
-    min-height: 78vh;
-    padding-top: 5.2rem; /* compensar nav fixa */
-  }
+  /* HERO */
+  .hero{ min-height: 78vh; }
 
   .hero__content{
     max-width: 100%;
+    padding: 1.7rem 0;
   }
 
-  .hero h1{
-    font-size: 2rem;
-    line-height: 1.15;
-  }
-
-  .hero .lead{
-    font-size: 1rem;
-  }
+  .hero__subtitle{ font-size: 1rem; }
 
   .hero__cta{
     flex-direction: column;
@@ -758,43 +782,32 @@ img{ max-width:100%; display:block; }
     justify-content: center;
   }
 
-  /* PORTFÓLIO: 3 colunas -> 1 coluna */
+  /* SEÇÕES */
+  .section{ padding: 3.6rem 0; }
+  .section h2{ font-size: 1.75rem; }
+
+  /* SOBRE */
+  .section__grid{ grid-template-columns: 1fr; }
+  .card__miniGrid{ grid-template-columns: 1fr; }
+
+  /* PORTFÓLIO */
   .gallery{
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  .work__media{
-    height: 180px; /* evita card gigante */
-  }
+  .work__media{ height: 180px; }
 
-  /* SOBRE: se tiver grid/colunas, força 1 coluna */
-  .about__grid,
-  .sobre__grid,
-  .grid-2{
-    grid-template-columns: 1fr !important;
-  }
+  /* CONTATO */
+  .contact{ grid-template-columns: 1fr; gap: 1rem; }
 
-  /* CONTATO: 2 colunas -> 1 coluna */
-  .contact,
-  .contato,
-  .contact__grid{
-    grid-template-columns: 1fr !important;
-    gap: 1rem;
-  }
-
-  /* Form: botões full width */
-  .form .btn{
-    width: 100%;
-  }
-
-  /* Footer */
-  .footer__inner,
-  .footer .container{
+  /* FOOTER centralizado */
+  .footer__inner{
+    justify-content: center;
     text-align: center;
   }
 
-  /* Lightbox: botões de navegação menores */
+  /* Lightbox: botões menores */
   .lightbox__nav{
     width: 40px;
     height: 40px;
@@ -806,4 +819,6 @@ img{ max-width:100%; display:block; }
     font-size: 24px;
   }
 
+  .lightbox__prev{ left: 10px; }
+  .lightbox__next{ right: 10px; }
 }
