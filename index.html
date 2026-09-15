@@ -1,298 +1,393 @@
 <!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ricardo Viana | Móveis Sob Medida</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ricardo Viana | Móveis Sob Medida</title>
+    <!-- SEO básico -->
+    <meta
+      name="description"
+      content="Ricardo Viana - Móveis sob medida em Getúlio Vargas/RS. Projetos personalizados com acabamento premium. Orçamentos via WhatsApp."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://seudominio.com.br/" />
 
-  <!-- SEO básico -->
-  <meta name="description"
-    content="Ricardo Viana - Móveis sob medida em Getúlio Vargas/RS. Projetos personalizados com acabamento premium. Orçamentos via WhatsApp." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://seudominio.com.br/" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ricardo Viana | Móveis Sob Medida" />
+    <meta
+      property="og:description"
+      content="Projetos sob medida com design, qualidade e acabamento premium. Peça seu orçamento pelo WhatsApp."
+    />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Ricardo Viana | Móveis Sob Medida" />
-  <meta property="og:description"
-    content="Projetos sob medida com design, qualidade e acabamento premium. Peça seu orçamento pelo WhatsApp." />
+    <!-- Fonte (opcional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonte (opcional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- CSS (vamos criar depois) -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-  <!-- CSS (vamos criar depois) -->
-  <link rel="stylesheet" href="./style.css" />
-</head>
+  <body>
+    <!-- Header / Navbar fixa -->
+    <header class="header" id="topo">
+      <nav class="nav container" aria-label="Navegação principal">
+        <!-- Esquerda: Nome -->
+        <a class="brand" href="#home" aria-label="Ir para Home">
+          Ricardo Viana
+        </a>
 
-<body>
-  <!-- Header / Navbar fixa -->
-  <header class="header" id="topo">
-    <nav class="nav container" aria-label="Navegação principal">
-      <!-- Esquerda: Nome -->
-      <a class="brand" href="#home" aria-label="Ir para Home">
-        Ricardo Viana
-      </a>
+        <!-- Centro: Links -->
+        <ul class="nav__links" id="nav-menu" role="list">
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#sobre">Sobre</a></li>
+          <li><a class="nav__link" href="#portfolio">Portfólio</a></li>
+          <li><a class="nav__link" href="#contato">Contato</a></li>
+        </ul>
 
-      <!-- Centro: Links -->
-      <ul class="nav__links" role="list">
-        <li><a class="nav__link" href="#home">Home</a></li>
-        <li><a class="nav__link" href="#sobre">Sobre</a></li>
-        <li><a class="nav__link" href="#portfolio">Portfólio</a></li>
-        <li><a class="nav__link" href="#contato">Contato</a></li>
-      </ul>
+        <!-- WhatsApp -->
+        <a
+          class="nav__whats"
+          href="https://wa.me/5554984338859?text=Olá%2C%20Ricardo!%20Quero%20um%20orçamento%20para%20móveis%20sob%20medida."
+          target="_blank"
+          rel="noopener"
+          aria-label="Falar no WhatsApp"
+          title="Falar no WhatsApp"
+        >
+          <svg
+            class="icon"
+            width="22"
+            height="22"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M19.11 17.23c-.29-.14-1.72-.85-1.99-.95-.27-.1-.47-.14-.67.14-.2.29-.77.95-.95 1.15-.17.2-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.43-.85-.75-1.43-1.68-1.6-1.97-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.52.14-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.14-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.14.2 2.11 3.22 5.12 4.52.72.31 1.27.49 1.7.63.71.22 1.36.19 1.87.12.57-.08 1.72-.7 1.97-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.34zM16.02 3C9.39 3 4 8.39 4 15.02c0 2.12.55 4.19 1.59 6.02L4 29l8.2-1.54c1.77.96 3.76 1.47 5.82 1.47 6.63 0 12.02-5.39 12.02-12.02C30.04 8.39 24.65 3 18.02 3zm0 23.74c-1.9 0-3.76-.5-5.39-1.45l-.39-.22-4.87.91.92-4.74-.26-.41a10.69 10.69 0 0 1-1.61-5.8c0-5.9 4.8-10.7 10.7-10.7 5.9 0 10.7 4.8 10.7 10.7 0 5.9-4.8 10.7-10.7 10.7z"
+            ></path>
+          </svg>
 
-      <!-- Direita: WhatsApp -->
-      <a class="nav__whats"
-        href="https://wa.me/5554984338859?text=Olá%2C%20Ricardo!%20Quero%20um%20orçamento%20para%20móveis%20sob%20medida."
-        target="_blank" rel="noopener" aria-label="Falar no WhatsApp" title="Falar no WhatsApp">
-        <!-- Ícone WhatsApp (SVG) -->
-        <svg class="icon" width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <path
-            d="M19.11 17.23c-.29-.14-1.72-.85-1.99-.95-.27-.1-.47-.14-.67.14-.2.29-.77.95-.95 1.15-.17.2-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.43-.85-.75-1.43-1.68-1.6-1.97-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.52.14-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.14-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.14.2 2.11 3.22 5.12 4.52.72.31 1.27.49 1.7.63.71.22 1.36.19 1.87.12.57-.08 1.72-.7 1.97-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.34zM16.02 3C9.39 3 4 8.39 4 15.02c0 2.12.55 4.19 1.59 6.02L4 29l8.2-1.54c1.77.96 3.76 1.47 5.82 1.47 6.63 0 12.02-5.39 12.02-12.02C30.04 8.39 24.65 3 18.02 3zm0 23.74c-1.9 0-3.76-.5-5.39-1.45l-.39-.22-4.87.91.92-4.74-.26-.41a10.69 10.69 0 0 1-1.61-5.8c0-5.9 4.8-10.7 10.7-10.7 5.9 0 10.7 4.8 10.7 10.7 0 5.9-4.8 10.7-10.7 10.7z">
-          </path>
-        </svg>
-        <span class="nav__whatsText">WhatsApp</span>
-      </a>
-    </nav>
-  </header>
+          <span class="nav__whatsText">WhatsApp</span>
+        </a>
 
-  <!-- Main -->
-  <main>
-    <!-- HOME / Hero (foto ocupando a tela toda) -->
-    <section class="hero" id="home" aria-label="Seção inicial">
+        <!-- Botão hambúrguer - Mobile -->
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-controls="nav-menu"
+          aria-expanded="false"
+        >
+          <span class="nav__toggleLine"></span>
+          <span class="nav__toggleLine"></span>
+          <span class="nav__toggleLine"></span>
+        </button>
+      </nav>
+    </header>
 
-      <!-- Imagem em tela cheia (troque o arquivo depois) -->
-      <div class="hero__bg"></div>
-      <div class="hero__bg hero__bg--top"></div>
+    <!-- Main -->
+    <main>
+      <!-- HOME / Hero (foto ocupando a tela toda) -->
+      <section class="hero" id="home" aria-label="Seção inicial">
+        <!-- Imagem em tela cheia (troque o arquivo depois) -->
+        <div class="hero__bg"></div>
+        <div class="hero__bg hero__bg--top"></div>
 
-      <div class="hero__content container">
-        <p class="hero__tag">Getúlio Vargas/RS • Móveis sob medida</p>
-        <h1 class="hero__title">Design, medida certa e acabamento premium.</h1>
-        <p class="hero__subtitle">
-          Projetos personalizados para cozinhas, dormitórios, salas, escritórios e ambientes comerciais.
+        <div class="hero__content container">
+          <p class="hero__tag">Getúlio Vargas/RS • Móveis sob medida</p>
+          <h1 class="hero__title">
+            Design, medida certa e acabamento premium.
+          </h1>
+          <p class="hero__subtitle">
+            Projetos personalizados para cozinhas, dormitórios, salas,
+            escritórios e ambientes comerciais.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn" href="#portfolio">Ver Portfólio</a>
+            <a class="btn btn--ghost" href="#contato">Pedir Orçamento</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="section" id="sobre" aria-label="Sobre">
+        <div class="container section__grid">
+          <div class="section__content">
+            <h2>Sobre</h2>
+            <p>
+              Ricardo Viana atua há anos com marcenaria e móveis sob medida,
+              entregando projetos com atenção aos detalhes, funcionalidade e
+              excelente acabamento.
+            </p>
+            <p>
+              Do planejamento à instalação, cada etapa é pensada para valorizar
+              seu espaço e tornar o dia a dia mais prático.
+            </p>
+
+            <ul class="bullets">
+              <li>Atendimento personalizado</li>
+              <li>Projeto e execução sob medida</li>
+              <li>Acabamentos e ferragens de qualidade</li>
+            </ul>
+          </div>
+
+          <aside class="section__card" aria-label="Destaques">
+            <div class="card">
+              <h3>O que você recebe</h3>
+              <p>
+                Um projeto que combina estética, ergonomia e durabilidade —
+                pensado para o seu espaço.
+              </p>
+
+              <div class="card__miniGrid">
+                <div class="mini">
+                  <strong>Planejamento</strong>
+                  <span>Medidas e layout</span>
+                </div>
+                <div class="mini">
+                  <strong>Execução</strong>
+                  <span>Precisão e cuidado</span>
+                </div>
+                <div class="mini">
+                  <strong>Instalação</strong>
+                  <span>Acabamento final</span>
+                </div>
+                <div class="mini">
+                  <strong>Pós-venda</strong>
+                  <span>Suporte e ajustes</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PORTFÓLIO -->
+      <section
+        class="section section--alt"
+        id="portfolio"
+        aria-label="Portfólio"
+      >
+        <div class="container">
+          <div class="section__head">
+            <h2>Portfólio</h2>
+            <p class="muted">Alguns exemplos de ambientes planejados.</p>
+          </div>
+
+          <div class="gallery" role="list">
+            <!-- Cards/itens do portfólio (placeholders) -->
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-cozinha"
+                aria-label="Projeto de cozinha planejada"
+              ></div>
+              <div class="work__info">
+                <h3>Cozinha Planejada</h3>
+                <p>
+                  Organização e elegância com aproveitamento máximo do espaço.
+                </p>
+              </div>
+            </article>
+
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-dormitorio"
+                aria-label="Projeto de dormitório sob medida"
+              ></div>
+              <div class="work__info">
+                <h3>Dormitório Sob Medida</h3>
+                <p>Roupeiros, cabeceiras e painéis com acabamento premium.</p>
+              </div>
+            </article>
+
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-sala"
+                aria-label="Projeto de sala e painel de TV"
+              ></div>
+              <div class="work__info">
+                <h3>Sala / Painel de TV</h3>
+                <p>Integração do ambiente com design minimalista.</p>
+              </div>
+            </article>
+
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-escritorio"
+                aria-label="Projeto de escritório sob medida"
+              ></div>
+              <div class="work__info">
+                <h3>Escritório / Home Office</h3>
+                <p>Conforto e produtividade com móveis funcionais.</p>
+              </div>
+            </article>
+
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-comercial"
+                aria-label="Projeto comercial"
+              ></div>
+              <div class="work__info">
+                <h3>Comercial</h3>
+                <p>Balcões, expositores e soluções para o seu negócio.</p>
+              </div>
+            </article>
+
+            <article class="work" role="listitem">
+              <div
+                class="work__media media-projeto"
+                aria-label="Projeto sob medida"
+              ></div>
+              <div class="work__info">
+                <h3>Projeto Sob Medida</h3>
+                <p>Do rascunho à instalação: tudo pensado para o seu espaço.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section class="section" id="contato" aria-label="Contato">
+        <div class="container contact">
+          <div class="contact__text">
+            <h2>Contato</h2>
+            <p>
+              Quer um orçamento? Me chama no WhatsApp ou envie uma mensagem com
+              as informações do seu projeto.
+            </p>
+
+            <div class="contact__cards">
+              <a
+                class="contact__card"
+                href="https://wa.me/5554984338859?text=Olá%2C%20Ricardo!%20Quero%20um%20orçamento%20para%20móveis%20sob%20medida."
+                target="_blank"
+                rel="noopener"
+              >
+                <strong>WhatsApp</strong>
+                <span class="muted">(54) 98433-8859</span>
+              </a>
+
+              <a class="contact__card" href="mailto:contato@seudominio.com.br">
+                <strong>E-mail</strong>
+                <span class="muted">contato@seudominio.com.br</span>
+              </a>
+
+              <div class="contact__card">
+                <strong>Cidade</strong>
+                <span class="muted">Getúlio Vargas/RS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form simples (opcional) -->
+          <form class="form" id="whatsForm" autocomplete="on">
+            <h3>Enviar mensagem</h3>
+
+            <label class="field">
+              <span>Nome</span>
+              <input type="text" name="nome" placeholder="Digite seu nome..." />
+            </label>
+
+            <label class="field">
+              <span>Telefone</span>
+              <input
+                type="tel"
+                id="telefone"
+                placeholder="(DDD) 9xxxx-xxxx"
+                maxlength="15"
+              />
+            </label>
+
+            <label class="field">
+              <span>Mensagem</span>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                rows="3"
+                placeholder="Digite a sua mensagem..."
+              ></textarea>
+            </label>
+
+            <button class="btn" type="submit">Enviar</button>
+
+            <p class="tiny muted">
+              *Ao clicar, você será redirecionado(a) para o WhatsApp com a
+              mensagem pronta.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>
+          © <span id="year">2026</span> Ricardo Viana — Móveis Sob Medida. Todos
+          os direitos reservados.
         </p>
 
-        <div class="hero__cta">
-          <a class="btn" href="#portfolio">Ver Portfólio</a>
-          <a class="btn btn--ghost" href="#contato">Pedir Orçamento</a>
-        </div>
+        <p class="muted">
+          Criado por
+          <a
+            href="https://www.instagram.com/assisfilipee/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            Filipe Assis
+          </a>
+        </p>
       </div>
-    </section>
+    </footer>
 
-    <!-- SOBRE -->
-    <section class="section" id="sobre" aria-label="Sobre">
-      <div class="container section__grid">
-        <div class="section__content">
-          <h2>Sobre</h2>
-          <p>
-            Ricardo Viana atua há anos com marcenaria e móveis sob medida, entregando projetos com atenção aos detalhes,
-            funcionalidade e excelente acabamento.
-          </p>
-          <p>
-            Do planejamento à instalação, cada etapa é pensada para valorizar seu espaço e tornar o dia a dia mais
-            prático.
-          </p>
-
-          <ul class="bullets">
-            <li>Atendimento personalizado</li>
-            <li>Projeto e execução sob medida</li>
-            <li>Acabamentos e ferragens de qualidade</li>
-          </ul>
-        </div>
-
-        <aside class="section__card" aria-label="Destaques">
-          <div class="card">
-            <h3>O que você recebe</h3>
-            <p>Um projeto que combina estética, ergonomia e durabilidade — pensado para o seu espaço.</p>
-
-            <div class="card__miniGrid">
-              <div class="mini">
-                <strong>Planejamento</strong>
-                <span>Medidas e layout</span>
-              </div>
-              <div class="mini">
-                <strong>Execução</strong>
-                <span>Precisão e cuidado</span>
-              </div>
-              <div class="mini">
-                <strong>Instalação</strong>
-                <span>Acabamento final</span>
-              </div>
-              <div class="mini">
-                <strong>Pós-venda</strong>
-                <span>Suporte e ajustes</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- PORTFÓLIO -->
-    <section class="section section--alt" id="portfolio" aria-label="Portfólio">
-      <div class="container">
-        <div class="section__head">
-          <h2>Portfólio</h2>
-          <p class="muted">Alguns exemplos de ambientes planejados.</p>
-        </div>
-
-        <div class="gallery" role="list">
-
-          <!-- Cards/itens do portfólio (placeholders) -->
-          <article class="work" role="listitem">
-            <div class="work__media media-cozinha" aria-label="Projeto de cozinha planejada"></div>
-            <div class="work__info">
-              <h3>Cozinha Planejada</h3>
-              <p>Organização e elegância com aproveitamento máximo do espaço.</p>
-            </div>
-          </article>
-
-          <article class="work" role="listitem">
-            <div class="work__media media-dormitorio" aria-label="Projeto de dormitório sob medida"></div>
-            <div class="work__info">
-              <h3>Dormitório Sob Medida</h3>
-              <p>Roupeiros, cabeceiras e painéis com acabamento premium.</p>
-            </div>
-          </article>
-
-          <article class="work" role="listitem">
-            <div class="work__media media-sala" aria-label="Projeto de sala e painel de TV"></div>
-            <div class="work__info">
-              <h3>Sala / Painel de TV</h3>
-              <p>Integração do ambiente com design minimalista.</p>
-            </div>
-          </article>
-
-          <article class="work" role="listitem">
-            <div class="work__media media-escritorio" aria-label="Projeto de escritório sob medida"></div>
-            <div class="work__info">
-              <h3>Escritório / Home Office</h3>
-              <p>Conforto e produtividade com móveis funcionais.</p>
-            </div>
-          </article>
-
-          <article class="work" role="listitem">
-            <div class="work__media media-comercial" aria-label="Projeto comercial"></div>
-            <div class="work__info">
-              <h3>Comercial</h3>
-              <p>Balcões, expositores e soluções para o seu negócio.</p>
-            </div>
-          </article>
-
-          <article class="work" role="listitem">
-            <div class="work__media media-projeto" aria-label="Projeto sob medida"></div>
-            <div class="work__info">
-              <h3>Projeto Sob Medida</h3>
-              <p>Do rascunho à instalação: tudo pensado para o seu espaço.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="section" id="contato" aria-label="Contato">
-      <div class="container contact">
-        <div class="contact__text">
-          <h2>Contato</h2>
-          <p>
-            Quer um orçamento? Me chama no WhatsApp ou envie uma mensagem com as informações do seu projeto.
-          </p>
-
-          <div class="contact__cards">
-            <a class="contact__card"
-              href="https://wa.me/5554984338859?text=Olá%2C%20Ricardo!%20Quero%20um%20orçamento%20para%20móveis%20sob%20medida."
-              target="_blank" rel="noopener">
-              <strong>WhatsApp</strong>
-              <span class="muted">(54) 98433-8859</span>
-            </a>
-
-            <a class="contact__card" href="mailto:contato@seudominio.com.br">
-              <strong>E-mail</strong>
-              <span class="muted">contato@seudominio.com.br</span>
-            </a>
-
-            <div class="contact__card">
-              <strong>Cidade</strong>
-              <span class="muted">Getúlio Vargas/RS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Form simples (opcional) -->
-        <form class="form" id="whatsForm" autocomplete="on">
-          <h3>Enviar mensagem</h3>
-
-          <label class="field">
-            <span>Nome</span>
-            <input type="text" name="nome" placeholder="Digite seu nome..." />
-          </label>
-
-          <label class="field">
-            <span>Telefone</span>
-            <input type="tel" id="telefone" placeholder="(DDD) 9xxxx-xxxx" maxlength="15" />
-          </label>
-
-          <label class="field">
-            <span>Mensagem</span>
-            <textarea id="mensagem" name="mensagem" rows="3" placeholder="Digite a sua mensagem..."></textarea>
-          </label>
-
-          <button class="btn" type="submit">
-            Enviar
-          </button>
-
-          <p class="tiny muted">
-            *Ao clicar, você será redirecionado(a) para o WhatsApp com a mensagem pronta.
-          </p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>© <span id="year">2026</span> Ricardo Viana — Móveis Sob Medida. Todos os direitos reservados.</p>
-
-      <p class="muted">
-        Criado por
-        <a href="https://www.instagram.com/assisfilipee/" target="_blank" rel="noopener noreferrer" class="footer-link">
-          Filipe Assis
-        </a>
-      </p>
-
-    </div>
-  </footer>
-
-  <!--
+    <!--
     Imagem do HERO:
     No CSS a gente vai setar a foto do herói assim:
     .hero__bg { background-image: url('./img/hero.jpg'); }
     (ou pode trocar para <img> se preferir)
   -->
 
-  <!-- Lightbox (Modal de imagem) -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox__close" type="button" aria-label="Fechar (Esc)">×</button>
+    <!-- Lightbox (Modal de imagem) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox__close" type="button" aria-label="Fechar (Esc)">
+        ×
+      </button>
 
-    <button class="lightbox__nav lightbox__prev" type="button" aria-label="Imagem anterior">‹</button>
+      <button
+        class="lightbox__nav lightbox__prev"
+        type="button"
+        aria-label="Imagem anterior"
+      >
+        ‹
+      </button>
 
-    <figure class="lightbox__content" role="dialog" aria-modal="true" aria-label="Visualização de imagem">
-      <img class="lightbox__img" alt="Imagem ampliada do portfólio" />
-      <figcaption class="lightbox__caption"></figcaption>
-    </figure>
+      <figure
+        class="lightbox__content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visualização de imagem"
+      >
+        <img class="lightbox__img" alt="Imagem ampliada do portfólio" />
+        <figcaption class="lightbox__caption"></figcaption>
+      </figure>
 
-    <button class="lightbox__nav lightbox__next" type="button" aria-label="Próxima imagem">›</button>
-  </div>
+      <button
+        class="lightbox__nav lightbox__next"
+        type="button"
+        aria-label="Próxima imagem"
+      >
+        ›
+      </button>
+    </div>
 
-
-  <script src="./script.js"></script>
-
-
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
